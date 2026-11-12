@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Offline phishing-awareness training with URL red-flag explanations. No links opened, no data uploaded.">
+<meta name="theme-color" content="#0a1424"><title>phishingGEN · Link Safety Lab</title>
+<link rel="stylesheet" href="style.css"></head>
+<body><main class="shell">
+<header><div class="brand"><span class="brand-mark">◎</span> phishing<span class="accent">GEN</span></div><span class="pill">DEFENSIVE TRAINING LAB</span></header>
+<section class="hero"><p class="eyebrow">SECURITY EDUCATION / LOCAL-ONLY</p><h1>See the signs.<br><em>Think before you click.</em></h1>
+<p>Learn how suspicious links try to mislead people. Paste a URL for a local checklist; nothing is opened, fetched, or transmitted.</p></section>
+<section class="workspace"><div class="panel"><div class="step">01 / INSPECT</div><h2>Check a link</h2>
+<label for="url">URL to examine</label><input id="url" type="text" spellcheck="false" autocomplete="off" value="https://accounts.example.com@security-check.invalid/login" placeholder="https://example.com" maxlength="2048">
+<div class="actions"><button id="analyze" class="primary">Analyze red flags</button><button id="clear" class="secondary">Clear</button></div>
+<p class="small">Educational patterns only. A clean result does not prove a link is safe.</p></div>
+<div class="panel results"><div class="step">02 / LEARN</div><h2>What to notice</h2><div id="result" role="status" aria-live="polite">Select Analyze red flags to begin.</div><ul id="flags"></ul></div></section>
+<section class="learning"><div class="panel"><div class="step">03 / PRACTICE</div><h2>Spot the red flags</h2><p>Try a harmless example link with misleading user-info before the @ sign. No real site will be contacted.</p><button id="example" class="secondary">Load training example</button></div>
+<div class="panel"><div class="step">04 / STAY SAFER</div><h2>Safer habits</h2><p>Open trusted websites from saved bookmarks, use password managers and passkeys, and report suspected phishing through your organization's approved channels.</p></div></section>
+<footer>Offline analysis · No link generation · No credential collection · No network requests</footer></main>
+<script src="analyzer.js"></script><script src="app.js"></script></body></html>

@@ -1,0 +1,12 @@
+const assert=require('node:assert/strict');
+const {analyzeUrl}=require('./analyzer.js');
+assert.equal(analyzeUrl('https://example.com').valid,true);
+assert.equal(analyzeUrl('file:///etc/passwd').valid,false);
+assert.equal(analyzeUrl('javascript:alert(1)').valid,false);
+assert.equal(analyzeUrl('').valid,false);
+assert(analyzeUrl('http://example.com').flags.some(x=>x.includes('HTTP')));
+assert(analyzeUrl('https://trusted.example@malicious.invalid').flags.some(x=>x.includes('@')));
+assert(analyzeUrl('https://bit.ly/a').flags.some(x=>x.includes('shortener')));
+assert(analyzeUrl('https://xn--bcher-kva.example').flags.some(x=>x.includes('punycode')));
+assert.equal(analyzeUrl('https://example.com').flags.length,0);
+console.log('9 defensive URL analysis checks passed');
