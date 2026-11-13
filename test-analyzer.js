@@ -9,4 +9,7 @@ assert(analyzeUrl('https://trusted.example@malicious.invalid').flags.some(x=>x.i
 assert(analyzeUrl('https://bit.ly/a').flags.some(x=>x.includes('shortener')));
 assert(analyzeUrl('https://xn--bcher-kva.example').flags.some(x=>x.includes('punycode')));
 assert.equal(analyzeUrl('https://example.com').flags.length,0);
-console.log('9 defensive URL analysis checks passed');
+assert(analyzeUrl('https://example.com/path\\u202e').flags.some(x=>x.includes('Bidirectional')));
+assert(analyzeUrl('https://example.com/\\tlogin').flags.some(x=>x.includes('control characters')));
+assert.equal(analyzeUrl('https://example.com/safe').flags.some(x=>x.includes('control characters')),false);
+console.log('12 defensive URL analysis checks passed');
