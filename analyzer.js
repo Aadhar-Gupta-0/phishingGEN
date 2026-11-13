@@ -9,6 +9,11 @@ function analyzeUrl(input){
   if(!['http:','https:'].includes(url.protocol)) return {valid:false,flags:['Only HTTP and HTTPS addresses can be checked.']};
   const host=url.hostname.toLowerCase();
   const flags=[];
+  // These invisible characters can change how a URL appears in messages.
+  if (/[\u202a-\u202e\u2066-\u2069]/.test(trimmed))
+    flags.push('Bidirectional text controls can disguise the visible link order.');
+  if (/[\u0000-\u001f\u007f]/.test(trimmed))
+    flags.push('Hidden control characters may change how the URL is interpreted.');
   if(url.protocol==='http:') flags.push('This URL uses HTTP, which does not encrypt the connection.');
   if(url.username||url.password) flags.push('The URL contains user-info before @. This can conceal the real destination hostname.');
   if(/^\d{1,3}(?:\.\d{1,3}){3}$/.test(host)||host.startsWith('[')) flags.push('The destination is an IP address rather than a familiar domain name.');
